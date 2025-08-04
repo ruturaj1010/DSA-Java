@@ -2,27 +2,26 @@ import java.util.Scanner;
 
 public class NtoOne {
     public static void printNumbersFromNto1(int n) {
-        if ( n == 1 ){
+        if (n == 1) {
             System.out.print(n);
             return;
         }
 
         System.out.print(n + " ");
 
-        printNumbersFromNto1(n-1);
+        printNumbersFromNto1(n - 1);
 
     }
 
-    public static void printNumbersFrom1toN(int n, int count) {
-        if ( count == n ) {
-            System.out.print(count);
+    public static void printNumbersFrom1toN(int n) {
+        if (n == 1) {
+            System.out.print(n);
             return;
         }
-
-        System.out.print(count + " ");
-
-        printNumbersFrom1toN(n, ++count);
+        printNumbersFrom1toN(n - 1);
+        System.out.print(" " + n);
     }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
@@ -32,8 +31,8 @@ public class NtoOne {
         printNumbersFromNto1(num);
 
         System.out.println();
-        
-        printNumbersFrom1toN(num, 1);
+
+        printNumbersFrom1toN(num);
 
         sc.close();
     }
