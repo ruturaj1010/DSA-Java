@@ -1,10 +1,8 @@
 public class Sudoku {
     public static boolean solveSudoku(int sudoku[][], int row, int col) {
         // Base case
-        if (row == 9 && col == 0) {
+        if (row == 9) {
             return true;
-        } else if (row == 9) {
-            return false;
         }
 
         // Recurrsion
@@ -72,7 +70,7 @@ public class Sudoku {
 
     public static void main(String args[]) {
         int sudoku[][] = {
-                { 0, 0, 8, 0, 0, 0, 0, 0, 0 },
+                { 0, 0, 8, 0, 0, 0, 0, 0, 5 },
                 { 4, 9, 0, 1, 5, 7, 0, 0, 2 },
                 { 0, 0, 3, 0, 0, 4, 1, 9, 0 },
                 { 1, 8, 5, 0, 6, 0, 0, 2, 0 },
