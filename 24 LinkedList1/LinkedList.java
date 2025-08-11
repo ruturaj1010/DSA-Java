@@ -121,6 +121,24 @@ public class LinkedList {
         System.out.println();
     }
 
+    public int itrSearch(int key) {  // O(n)
+        if (isEmpty(head)) {
+            return -1;
+        }
+
+        Node temp = head;
+        int i=0;
+        while (temp != null) {
+            if (temp.data == key) {
+                return i;
+            }
+            temp = temp.next;
+            i++;
+        }
+
+        return -1;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addFirst(1);
@@ -132,7 +150,14 @@ public class LinkedList {
         ll.printLL(head);
         // System.out.println(size);
         // ll.removeFirst();
-        ll.removeLast();
-        ll.printLL(head);
+        // ll.removeLast();
+        // ll.printLL(head);
+
+
+        if (ll.itrSearch(3) != -1) {
+            System.out.println("Key found at index "+ ll.itrSearch(3));
+        } else {
+            System.out.println("Key not found");
+        }
     }
 }
