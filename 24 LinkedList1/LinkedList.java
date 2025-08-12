@@ -156,7 +156,6 @@ public class LinkedList {
 
         return idx + 1;
     }
-
     public void recSearch(int key) {
         System.out.println(recHelper(head, key));
         return;
@@ -178,6 +177,39 @@ public class LinkedList {
             curr = next;
         }
         head = prev;
+    }
+
+    public void deleteNthFromEnd(int n) {
+
+        if(head ==  null) {
+            System.out.println("List is empty.");
+            return;
+        }
+
+        int sz = 0;
+        Node temp = head;
+        while (temp != null) {
+            temp = temp.next;
+            sz++;
+        }
+
+        if (n > sz) {
+            System.out.println("ll is smaller");
+            return;
+        }
+
+        if( n == sz) {
+            head = head.next;
+            return;
+        }
+
+        Node prev = null;
+        Node curr = head;
+        for(int i=1; i < (sz-n)+1; i++) {
+            prev = curr;
+            curr = prev.next;
+        }
+        prev.next = curr.next;
     }
 
     public static void main(String[] args) {
@@ -203,7 +235,10 @@ public class LinkedList {
         // ll.recSearch(4);
         // ll.recSearch(10);
 
-        ll.reverseLL();
-        ll.printLL(head);
+        // ll.reverseLL();
+        // ll.printLL(head);
+
+        // ll.deleteNthFromEnd(5);
+        // ll.printLL(head);
     }
 }
