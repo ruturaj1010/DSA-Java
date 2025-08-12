@@ -162,6 +162,24 @@ public class LinkedList {
         return;
     }
 
+    public void reverseLL() {
+        if (head == null || head.next == null) {
+            return;
+        }
+
+        Node prev = null;
+        Node curr = tail = head;
+        Node next;
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
         ll.addFirst(1);
@@ -182,7 +200,10 @@ public class LinkedList {
         // System.out.println("Key not found");
         // }
 
-        ll.recSearch(4);
-        ll.recSearch(10);
+        // ll.recSearch(4);
+        // ll.recSearch(10);
+
+        ll.reverseLL();
+        ll.printLL(head);
     }
 }
