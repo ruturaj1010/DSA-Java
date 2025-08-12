@@ -86,7 +86,7 @@ public class LinkedList {
 
         // this is also easy to understand the looping concept
         // for (int i = 0; i < size-2; i++) {
-        //     temp = temp.next;
+        // temp = temp.next;
         // }
 
         while (temp.next != tail) {
@@ -121,13 +121,13 @@ public class LinkedList {
         System.out.println();
     }
 
-    public int itrSearch(int key) {  // O(n)
+    public int itrSearch(int key) { // O(n)
         if (isEmpty(head)) {
             return -1;
         }
 
         Node temp = head;
-        int i=0;
+        int i = 0;
         while (temp != null) {
             if (temp.data == key) {
                 return i;
@@ -137,6 +137,29 @@ public class LinkedList {
         }
 
         return -1;
+    }
+
+    public int recHelper(Node head, int key) { // O(n)
+        if (head == null) {
+            return -1;
+        }
+
+        if (head.data == key) {
+            return 0;
+        }
+
+        int idx = recHelper(head.next, key);
+
+        if (idx == -1) {
+            return -1;
+        }
+
+        return idx + 1;
+    }
+
+    public void recSearch(int key) {
+        System.out.println(recHelper(head, key));
+        return;
     }
 
     public static void main(String[] args) {
@@ -153,11 +176,13 @@ public class LinkedList {
         // ll.removeLast();
         // ll.printLL(head);
 
+        // if (ll.itrSearch(3) != -1) {
+        // System.out.println("Key found at index "+ ll.itrSearch(3));
+        // } else {
+        // System.out.println("Key not found");
+        // }
 
-        if (ll.itrSearch(3) != -1) {
-            System.out.println("Key found at index "+ ll.itrSearch(3));
-        } else {
-            System.out.println("Key not found");
-        }
+        ll.recSearch(4);
+        ll.recSearch(10);
     }
 }
