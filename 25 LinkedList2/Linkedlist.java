@@ -47,8 +47,8 @@ public class Linkedlist {
         }
 
         Node slow = head;
-        Node fast = head.next;
-        while (fast.next != null && fast != null) {
+        Node fast = head;
+        while ( fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
             if (slow == fast) {
@@ -61,17 +61,53 @@ public class Linkedlist {
         return;
     }
 
+    public void removellCycle() {
+        // detect cycle
+        Node slow = head;
+        Node fast = head;
+        boolean cycle = false;
+        while (fast.next != null && fast != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if(fast == slow) {
+                cycle = true;
+                break;
+            }
+        }
+        if (!cycle) {
+            return;
+        }
+
+        // find the last node
+        slow = head;
+        Node prev = null;
+        while (slow != fast) {
+            prev = fast;
+            fast = fast.next;
+            slow = slow.next;
+        }
+
+        // make last node to point at null by making prev -> prev.next = null;
+        prev.next = null;
+        System.out.println("Cycle removed");
+    }
+
     public static void main(String[] args) {
         Linkedlist ll = new Linkedlist();
         ll.addLast(1);
         ll.addLast(2);
         ll.addLast(3);
         ll.addLast(4);
-
-        ll.printll();
-
-        // tail.next = head;
-        // ll.detectCyclell();
+        
+        // ll.printll();
+        
+        Node temp = new Node(5);
+        temp.next = head.next;
+        head.next = temp;
+        tail.next = temp;
+        ll.detectCyclell();
+        ll.removellCycle();
+        ll.detectCyclell();
 
     }
 }
