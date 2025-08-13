@@ -89,6 +89,26 @@ public class DoubleLL {
         System.out.print("null\n");
     }
 
+    public void reverseDLL(){
+        if(head == null || head.next == null) {
+            return;
+        }
+
+        tail = head;
+
+        Node prev = null;
+        Node curr = head;
+        Node next;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            curr.prev = next;
+            prev = curr;
+            curr = next; 
+        }
+        head = prev;
+    }
+
     public static void main(String[] args) {
         DoubleLL ll = new DoubleLL();
 
@@ -100,6 +120,8 @@ public class DoubleLL {
         ll.removeFirst();
         ll.removeLast();
 
+        ll.printLL();
+        ll.reverseDLL();
         ll.printLL();
         System.out.println(size);
     }
