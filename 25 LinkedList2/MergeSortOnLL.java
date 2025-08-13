@@ -94,6 +94,43 @@ public class MergeSortOnLL {
 
         return mergeLLHead;
     }
+
+    public void zigZagll() {
+        // find the mid
+        Node slow = head;
+        Node fast = head.next;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        Node mid = slow;
+
+        // reverse the half LL
+        Node curr = mid.next;
+        mid.next = null;
+        Node prev = null;
+        Node next;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        // Zigzag the LL
+        Node lefth = head;
+        Node righth = prev;
+        Node nextL , nextR;
+        while (lefth != null && righth != null) {
+            nextL = lefth.next;
+            lefth.next = righth;
+            nextR = righth.next;
+            righth.next = nextL;
+            
+            lefth = nextL;
+            righth = nextR;
+        }
+    }
     
     public static void main(String[] args) {
         MergeSortOnLL ll = new MergeSortOnLL();
@@ -103,11 +140,14 @@ public class MergeSortOnLL {
         ll.addLast(4);
         ll.addLast(2);
         ll.addLast(5);
+        ll.addLast(1);
 
         ll.printLL();
 
-        head = ll.mergeSortll(head);
-        ll.printLL();
+        // head = ll.mergeSortll(head);
+        // ll.printLL();
 
+        ll.zigZagll();
+        ll.printLL();
     }
 }
