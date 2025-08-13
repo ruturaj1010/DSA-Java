@@ -212,13 +212,75 @@ public class LinkedList {
         prev.next = curr.next;
     }
 
+    public Node findMidLL() {
+        if (head == null) {
+            return null;
+        }
+
+        if (head.next == null ){
+            return head;
+        }
+
+        Node slow = head;
+        Node fast = head;
+
+        while (fast.next != null || fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        return slow;
+    }
+    public void checkPalindromeLL() {
+
+        if ( head == null ) {
+            System.out.println("ispalindrome for LL is empty");
+            return;
+        }
+        if(head.next == null) {
+            System.out.println("LL is palindrome");
+            return;
+        }
+
+        // Step 1 - find mid
+        Node mid = findMidLL();
+
+        // step 2 - reverse half of LL
+        Node prev = null; 
+        Node curr = mid;
+        Node next;
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        Node righthead = prev;
+
+        // step 3 - travel 1st and 2nd half
+        Node lefthead = head;
+
+        while (righthead != null) {
+            if (lefthead.data != righthead.data) {
+                System.out.println("LL is Not palindrome");
+                return;
+            }
+            righthead = righthead.next;
+            lefthead = lefthead.next;
+        }
+
+        System.out.println("LL is palindrome");
+        return;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
+        ll.addFirst(2);
         ll.addFirst(1);
-        ll.addFirst(0);
         ll.addLast(3);
         ll.addLast(4);
-        ll.add(2, 2);
+        ll.add(4, 5);
 
         ll.printLL(head);
         // System.out.println(size);
@@ -240,5 +302,8 @@ public class LinkedList {
 
         // ll.deleteNthFromEnd(5);
         // ll.printLL(head);
+
+        ll.checkPalindromeLL();
+
     }
 }
