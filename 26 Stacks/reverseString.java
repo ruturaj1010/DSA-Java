@@ -1,24 +1,27 @@
 import java.util.Stack;
 
 public class reverseString {
-    public static void StringRev(Stack<Character> s, String str) {
-        for (int i = 0; i < str.length(); i++) {
-            s.push(str.charAt(i));
+    public static void StringRev( String str) {
+        Stack<Character> s = new Stack<>();
+
+        int idx  = 0;
+        while ( idx < str.length()) {
+            s.push(str.charAt(idx));
+            idx++;
         }
 
-        str = "";
+        StringBuilder newStr = new StringBuilder("");
         while (!s.isEmpty()) {
-            System.out.print(str + s.peek());
-            s.pop();
+            char newChar = s.pop();
+            newStr.append(newChar);
         }
 
-        System.out.println(str);
+        System.out.println(newStr.toString());
     }
 
     public static void main(String[] args) {
-        Stack<Character> s = new Stack<>();
         String str = "abc";
 
-        StringRev(s, str);
+        StringRev( str);
     }
 }
