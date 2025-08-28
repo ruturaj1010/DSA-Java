@@ -12,7 +12,7 @@ public class UsingArray {
             front = -1;
         }
 
-        public static boolean isEmpty() {
+        public boolean isEmpty() {
             return rear == -1 && front == -1;
         }
 
