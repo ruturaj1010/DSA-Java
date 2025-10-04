@@ -13,7 +13,9 @@ public class PreorderTree {
     }
 
     static class BinaryTree {
+
         static int idx = -1;
+
         public Node buildTree(int Nodes[]) {
             idx++;
             if (Nodes[idx] == -1) {
@@ -26,6 +28,36 @@ public class PreorderTree {
 
             return newNode;
         }
+
+        public void printPreorder(Node root) {
+            if (root == null) {
+                System.out.print("-1 ");
+                return;
+            }
+            System.out.print(root.data + " ");
+            printPreorder(root.left);
+            printPreorder(root.right);
+        }
+
+        public void printInorder(Node root) {
+            if (root == null) {
+                System.out.print("-1 ");
+                return;
+            }
+            printInorder(root.left);
+            System.out.print(root.data + " ");
+            printInorder(root.right);
+        }
+
+        public void printPostorder(Node root) {
+            if (root == null) {
+                System.out.print("-1 ");
+                return;
+            }
+            printPostorder(root.left);
+            printPostorder(root.right);
+            System.out.print(root.data + " ");
+        }
     }
 
     public static void main(String args[]) {
@@ -34,6 +66,8 @@ public class PreorderTree {
         BinaryTree tree = new BinaryTree();
         Node root = tree.buildTree(nodes);
 
-        System.out.println(root.data);
+        // tree.printPreorder(root);
+        // tree.printInorder(root);
+        tree.printPostorder(root);
     }
 }
