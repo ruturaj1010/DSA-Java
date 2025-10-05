@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class PreorderTree {
     static class Node {
         int data;
@@ -58,6 +61,36 @@ public class PreorderTree {
             printPostorder(root.right);
             System.out.print(root.data + " ");
         }
+
+        public void printLevelorder(Node root) {
+            if (root == null) {
+                return;
+            }
+
+            Queue<Node> q = new LinkedList<>();
+            q.add(root);
+            q.add(null);
+
+            while (!q.isEmpty()) {
+                Node currNode = q.remove();
+                if (currNode == null) {
+                    System.out.println();
+                    if (q.isEmpty()) {
+                        break;
+                    } else {
+                        q.add(null);
+                    }
+                } else {
+                    System.out.print(currNode.data + " ");
+                    if (currNode.left != null) {
+                        q.add(currNode.left);
+                    }
+                    if (currNode.right != null) {
+                        q.add(currNode.right);
+                    }
+                }
+            }
+        }
     }
 
     public static void main(String args[]) {
@@ -68,6 +101,7 @@ public class PreorderTree {
 
         // tree.printPreorder(root);
         // tree.printInorder(root);
-        tree.printPostorder(root);
+        // tree.printPostorder(root);
+        tree.printLevelorder(root);
     }
 }
