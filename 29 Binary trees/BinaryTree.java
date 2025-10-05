@@ -1,7 +1,7 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class PreorderTree {
+public class BinaryTree {
     static class Node {
         int data;
         Node left;
@@ -15,7 +15,7 @@ public class PreorderTree {
 
     }
 
-    static class BinaryTree {
+    static class BinaryTrees {
 
         static int idx = -1;
 
@@ -96,7 +96,7 @@ public class PreorderTree {
     public static void main(String args[]) {
         int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
 
-        BinaryTree tree = new BinaryTree();
+        BinaryTrees tree = new BinaryTrees();
         Node root = tree.buildTree(nodes);
 
         // tree.printPreorder(root);
