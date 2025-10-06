@@ -14,7 +14,7 @@ public class HeightOfTree {
     static class BinaryTree {
         static int idx = -1;
 
-        public Node BuildTree (int Nodes[]) {
+        public Node BuildTree(int Nodes[]) {
             idx++;
             if (Nodes[idx] == -1) {
                 return null;
@@ -28,7 +28,7 @@ public class HeightOfTree {
         }
 
         public int HeightOfTree(Node root) {
-            if (root  == null) {
+            if (root == null) {
                 return 0;
             }
 
@@ -48,16 +48,29 @@ public class HeightOfTree {
 
             return lCount + rCount + 1;
         }
+
+        public int sumOfNodes(Node root) {
+            if(root == null) {
+                return 0;
+            }
+
+            int lsum = sumOfNodes(root.left);
+            int rsum = sumOfNodes(root.right);
+
+            return lsum + rsum + root.data;
+        }
     }
 
     public static void main(String[] args) {
         int nodes[] = { 1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 6, -1, -1 };
-        // int nodes[] = { 1, 2, 4, -1, -1, 5, 7, -1, -1, -1, 3, -1, 6, -1, -1 }; // height = 4
+        // int nodes[] = { 1, 2, 4, -1, -1, 5, 7, -1, -1, -1, 3, -1, 6, -1, -1 }; //
+        // height = 4
 
         BinaryTree bt = new BinaryTree();
         Node root = bt.BuildTree(nodes);
 
         // System.out.println(bt.HeightOfTree(root));
-        System.out.println(bt.countNodes(root));
+        // System.out.println(bt.countNodes(root));
+        System.out.println(bt.sumOfNodes(root));
     }
 }
