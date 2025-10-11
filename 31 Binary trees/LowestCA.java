@@ -57,6 +57,24 @@ public class LowestCA {
         System.out.println(path1.get(i - 1).data);
     }
 
+    public static Node optiLCA(Node root, int n1, int n2) {
+        if (root == null || root.data == n1 || root.data == n2) {
+            return root;
+        }
+
+        Node lca = optiLCA(root.left, n1, n2);
+        Node rca = optiLCA(root.right, n1, n2);
+
+        if (lca == null) {
+            return rca;
+        }
+        if (rca == null) {
+            return lca;
+        }
+
+        return root;
+    }
+
     public static void main(String[] args) {
         Node root = new Node(1);
         root.left = new Node(2);
@@ -67,5 +85,7 @@ public class LowestCA {
         root.right.right = new Node(7);
 
         LCA(root, 7, 6);
+
+        System.out.println(optiLCA(root, 4, 5).data);
     }
 }
