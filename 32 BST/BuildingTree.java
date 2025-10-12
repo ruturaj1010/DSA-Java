@@ -52,8 +52,8 @@ public class BuildingTree {
         }
     }
 
-    public static Node delete (Node root, int val) {
-        
+    public static Node delete(Node root, int val) {
+
         if (root.data < val) {
             root.right = delete(root.right, val);
         } else if (root.data > val) {
@@ -61,7 +61,7 @@ public class BuildingTree {
         } else {
 
             // case 1 no children
-            if (root.left == null && root.right ==  null) {
+            if (root.left == null && root.right == null) {
                 return null;
             }
 
@@ -88,20 +88,37 @@ public class BuildingTree {
         return root;
     }
 
+    public static void printInrange(Node root, int k1, int k2) {
+        if (root == null) {
+            return;
+        }
+        if (k1 <= root.data && root.data <= k2) {
+            printInrange(root.left, k1, k2);
+            System.out.print(root.data + " ");
+            printInrange(root.right, k1, k2);
+        } else if (k1 < root.data) {
+            printInrange(root.left, k1, k2);
+        } else {
+            printInrange(root.right, k1, k2);
+        }
+    }
+
     public static void main(String[] args) {
-        int values[] = { 8, 5, 3, 1, 4, 6, 10, 11, 14 };
+        int values[] = { 8, 5, 3, 1, 4, 6, 10, 11, 12, 14 };
 
         Node root = null;
         for (int val : values) {
             root = InsertNode(root, val);
         }
 
-        InOrder(root);
+        // InOrder(root);
 
-        System.out.println("\n" + (searchKey(root, 4) ? "Found" : "not found"));
+        // System.out.println("\n" + (searchKey(root, 4) ? "Found" : "not found"));
 
-        root = delete(root, 3);
+        // root = delete(root, 3);
 
-        InOrder(root);
+        // InOrder(root);
+
+        printInrange(root, 5, 12);
     }
 }
