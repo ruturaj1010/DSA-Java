@@ -11,8 +11,6 @@ public class BuildingTree {
         }
     }
 
-    
-
     public static void InOrder(Node root) {
         if (root == null) {
             return;
@@ -23,7 +21,7 @@ public class BuildingTree {
         InOrder(root.right);
     }
 
-    public static Node InsertNode (Node root, int val) {
+    public static Node InsertNode(Node root, int val) {
         if (root == null) {
             root = new Node(val);
             return root;
@@ -38,8 +36,24 @@ public class BuildingTree {
         return root;
     }
 
+    public static boolean searchKey(Node root, int key) {
+        if (root == null) {
+            return false;
+        }
+
+        if (root.data == key) {
+            return true;
+        }
+
+        if (root.data < key) {
+            return searchKey(root.right, key);
+        } else {
+            return searchKey(root.left, key);
+        }
+    }
+
     public static void main(String[] args) {
-        int values[] = { 5, 1, 3, 4, 2, 7 };
+        int values[] = { 8, 5, 3, 1, 4, 6, 10, 11, 14 };
 
         Node root = null;
         for (int val : values) {
@@ -47,5 +61,7 @@ public class BuildingTree {
         }
 
         InOrder(root);
+
+        System.out.println("\n" + (searchKey(root, 4) ? "Found" : "not found"));
     }
 }
