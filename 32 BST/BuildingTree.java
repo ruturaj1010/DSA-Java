@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class BuildingTree {
     static class Node {
         int data;
@@ -103,6 +105,31 @@ public class BuildingTree {
         }
     }
 
+    public static void printPaths(ArrayList<Integer> path) {
+        for (Integer val : path) {
+            System.out.print(val + " ");
+        }
+        System.out.println();
+    }
+
+    public static void rootToLeaf(Node root, ArrayList<Integer> path) {
+
+        if (root == null) {
+            return;
+        }
+
+        path.add(root.data);
+
+        if (root.left == null && root.right == null) {
+            printPaths(path);
+        } else {
+            rootToLeaf(root.left, path);
+            rootToLeaf(root.right, path);
+        }
+
+        path.remove(path.size()-1);
+    }
+
     public static void main(String[] args) {
         int values[] = { 8, 5, 3, 1, 4, 6, 10, 11, 12, 14 };
 
@@ -110,7 +137,6 @@ public class BuildingTree {
         for (int val : values) {
             root = InsertNode(root, val);
         }
-
         // InOrder(root);
 
         // System.out.println("\n" + (searchKey(root, 4) ? "Found" : "not found"));
@@ -119,6 +145,9 @@ public class BuildingTree {
 
         // InOrder(root);
 
-        printInrange(root, 5, 12);
+        // printInrange(root, 5, 12);
+
+        ArrayList<Integer> path = new ArrayList<>();
+        rootToLeaf(root , path);
     }
 }
