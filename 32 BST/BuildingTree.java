@@ -130,6 +130,22 @@ public class BuildingTree {
         path.remove(path.size()-1);
     }
 
+    public static boolean isValidBST(Node root, Node min, Node max ) {
+        if (root == null) {
+            return true;
+        }
+
+        if (min != null && root.data <= min.data) {
+            return false;
+        }
+
+        if (max != null && root.data >= max.data) {
+            return false;
+        }
+
+        return isValidBST(root.left, min, root) && isValidBST(root.right, root, max);
+    }
+
     public static void main(String[] args) {
         int values[] = { 8, 5, 3, 1, 4, 6, 10, 11, 12, 14 };
 
@@ -147,7 +163,9 @@ public class BuildingTree {
 
         // printInrange(root, 5, 12);
 
-        ArrayList<Integer> path = new ArrayList<>();
-        rootToLeaf(root , path);
+        // ArrayList<Integer> path = new ArrayList<>();
+        // rootToLeaf(root , path);
+
+        System.out.println((isValidBST(root, null, null) ? "Valid" : "Invalid"));
     }
 }
