@@ -13,6 +13,20 @@ public class CreateBalTree {
         }
     }
 
+    public static Node createTree(int Nodes[], int st, int ed) {
+        if (st > ed) {
+            return null;
+        }
+
+        int mid = (st + ed) / 2;
+
+        Node root = new Node(Nodes[mid]);
+        root.left = createTree(Nodes, st, mid - 1);
+        root.right = createTree(Nodes, mid + 1, ed);
+
+        return root;
+    }
+
     public static void printTree(Node root) {
         if (root == null) {
             System.out.print("-1 ");
@@ -37,6 +51,7 @@ public class CreateBalTree {
 
         return;
     }
+
     public static Node createBST(ArrayList<Integer> inorder, int st, int ed) {
         if (st > ed) {
             return null;
@@ -49,6 +64,7 @@ public class CreateBalTree {
 
         return root;
     }
+
     public static Node intoBalancedTree(Node root) {
         if (root == null) {
             return null;
