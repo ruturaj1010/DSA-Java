@@ -24,5 +24,22 @@ public class HashSetJCF {
         // hs.clear();  // clears all elements in a Set
         System.out.println(hs.size());
         System.out.println(hs.isEmpty());
+
+        hs.add(1);
+        hs.add(12);
+        hs.add(4);
+        hs.add(6);
+        hs.add(4);
+
+        Iterator<Integer> it = hs.iterator();
+
+        while (it.hasNext()) {
+            System.out.print(it.next() + " ");
+        }
+        System.out.println();
+
+        for (Integer ele : hs) {
+            System.out.print(ele + " ");
+        }
     }
 }
