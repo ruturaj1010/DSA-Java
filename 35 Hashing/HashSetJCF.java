@@ -41,5 +41,22 @@ public class HashSetJCF {
         for (Integer ele : hs) {
             System.out.print(ele + " ");
         }
+        System.out.println();
+
+        LinkedHashSet<String> lhs = new LinkedHashSet<>();
+        lhs.add("Mumbai");
+        lhs.add("Delhi");
+        lhs.add("Banglore");
+        lhs.add("Noida");
+
+        System.out.println(lhs);
+
+        TreeSet<Integer> ts = new TreeSet<>();   // Null values are not allowed
+        ts.add(2);
+        ts.add(7);
+        ts.add(4);
+        ts.add(1);
+
+        System.out.println(ts);
     }
 }
