@@ -3,7 +3,11 @@ import java.util.HashMap;
 public class AnagramValidation {
 
     public static boolean isAnagram(String str, String ang) {
-        
+
+        if (str.length() != ang.length()) {
+            return false;
+        }
+
         HashMap<Character, Integer> s = new HashMap<>();
 
         for (int i = 0; i < str.length(); i++) {
@@ -27,7 +31,7 @@ public class AnagramValidation {
     }
 
     public static void main(String[] args) {
-        String str = "race";
+        String str = "race";  // O(n)
         String ang = "care";
 
         System.out.println(isAnagram(str, ang));
