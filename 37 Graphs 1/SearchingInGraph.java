@@ -62,7 +62,22 @@ public class SearchingInGraph {
                 }
             }
         }
+
+        System.out.println();
     }
+
+    public static void dfs(ArrayList<Edge> graph[], int curr, boolean visi[]) {
+        System.out.print(curr + " ");
+        visi[curr] = true;
+
+        for (int i = 0; i < graph[curr].size(); i++) {
+            Edge e = graph[curr].get(i);
+            if (!visi[e.des]) {
+                dfs(graph, e.des , visi);
+            }
+        }
+    }
+
     public static void main(String[] args) {
 
         int V = 7;
@@ -72,5 +87,7 @@ public class SearchingInGraph {
         createGraph(graph);
 
         bfs(graph);
+
+        dfs(graph, 0 , new boolean[V]);
     }
 }
