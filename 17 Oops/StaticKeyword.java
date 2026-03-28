@@ -1,16 +1,16 @@
 public class StaticKeyword {
     @SuppressWarnings("static-access")
     public static void main(String[] args) {
-        Student s1 = new Student();
+        Students s1 = new Students();
         s1.schoolName = "KEMS";
 
 
-        Student s2 = new Student();
+        Students s2 = new Students();
         System.out.println(s2.schoolName);
     }
 }
 
-class Student {
+class Students {
     String name;
     int rollNo;
 

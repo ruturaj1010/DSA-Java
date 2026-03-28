@@ -15,19 +15,19 @@ public class oddEven {
         // int a = 5, b = 6, c = 2;
 
         // if (a > b && a > c) {
-        //     System.out.println("a is the largest number");
+        // System.out.println("a is the largest number");
         // } else if (b > a && b > c) {
-        //     System.out.println("b is the largest number");
+        // System.out.println("b is the largest number");
         // } else {
-        //     System.out.println("c is the largest number");
+        // System.out.println("c is the largest number");
         // }
 
         System.out.print("Enter a year : ");
         int year = sc.nextInt();
 
-        if( (year % 4) == 0 || (year % 100) == 0 || (year % 400) == 0) {
+        if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
             System.out.println("Year is a leap year");
-        } else  {
+        } else {
             System.out.println("Year is not a leap year");
         }
 

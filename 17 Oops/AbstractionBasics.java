@@ -3,7 +3,10 @@ public class AbstractionBasics {
         Horse h1 = new Horse();
         h1.eat();
         h1.walk();
-        
+        h1.printColor();
+        h1.changeColor();
+        h1.printColor();
+
         Chicken c1 = new Chicken();
         c1.changeColor();
         System.out.println(c1.color);
@@ -16,11 +19,11 @@ public class AbstractionBasics {
 abstract class Animal {
     String color;
 
-    Animal () {
+    Animal() {
         color = "Brown";
     }
 
-    void eat(){
+    void eat() {
         System.out.println("Animal Eat");
     };
 
@@ -28,9 +31,15 @@ abstract class Animal {
 }
 
 class Horse extends Animal {
-    void changeColor(){
+
+    void printColor() {
+        System.out.println(color);
+    }
+
+    void changeColor() {
         color = "Peach";
     }
+
     void walk() {
         System.out.println("walking on four legs.");
     }
@@ -40,6 +49,7 @@ class Chicken extends Animal {
     void changeColor() {
         color = "White";
     }
+
     void walk() {
         System.out.println("Walks on two legs.");
     }
